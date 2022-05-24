@@ -1,5 +1,36 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
+// Tagged Template Literal
+import { Global, css } from '@emotion/react'
+// Create Styled Component
+import styled from '@emotion/styled'
+
+const globalStyle = css`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+`
+// css function
+const TextStyle = css`
+  font-size: 18px;
+  font-weight: 700;
+  color: gray;
+`
+// Tagged Template Literal
+const Text1 = styled.div<{ disable: boolean }>`
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: ${({ disable }) => (disable ? 'line-through' : 'none')};
+`
+// Create Styled Component
+const Text2 = styled('div')<{ disable: boolean }>(({ disable }) => ({
+  fontSize: '15px',
+  color: 'blue',
+  textDecoration: disable ? 'line-through' : 'none',
+}))
 
 type InfoPageProps = {
   data: {
@@ -22,9 +53,10 @@ const InfoPage: FunctionComponent<InfoPageProps> = function ({
 }) {
   return (
     <div>
-      {title}
-      {description}
-      {author}
+      <Global styles={globalStyle} />
+      <div css={TextStyle}>{title}</div>
+      <Text1 disable={true}>{description}</Text1>
+      <Text2 disable={true}>{author}</Text2>
     </div>
   )
 }
