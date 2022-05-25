@@ -9,12 +9,12 @@ const Background = styled.div`
 `
 
 const Wrapper = styled.div`
-  dislplay: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   width: 768px;
-  height: 768px;
+  height: 400px;
   margin: 0 auto;
 `
 
